@@ -42,7 +42,7 @@ def predict_sentiment(sentence):
     processed_sentence = preprocess(sentence)
     
     # Predict using the pre-trained model
-    prediction = lr_model.predict([processed_sentence])
+    prediction = lr_model.predict(processed_sentence)
     
     return prediction[0]
 
