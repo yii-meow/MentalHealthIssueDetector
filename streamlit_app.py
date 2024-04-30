@@ -49,6 +49,7 @@ def predict_sentiment(sentence):
 def preprocess(text):
     lemmatizer = WordNetLemmatizer()
     stop_words = stopwords.words('english')
+    vectorizer = TfidfVectorizer(min_df=50,max_features=5000)
     
     text = text.lower()
     text = text.replace(r'[^\w\s]+','')
