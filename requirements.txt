@@ -1,7 +1,5 @@
-pandas
-numpy
+streamlit
 nltk
 sklearn
+scikit-learn
 joblib
-openpyxl
-matplotlib
