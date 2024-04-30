@@ -1,11 +1,11 @@
-nltk.download('punkt')
-
 import streamlit as st
 from joblib import load
 
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+
+nltk.download('punkt')
 
 import re
 
