@@ -1,3 +1,5 @@
+nltk.download('punkt')
+
 import streamlit as st
 from joblib import load
 
