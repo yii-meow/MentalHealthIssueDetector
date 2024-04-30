@@ -42,6 +42,8 @@ def predict_sentiment(sentence):
 # Preprocess function to clean and tokenize text
 def preprocess(text):
     lemmatizer = WordNetLemmatizer()
+    stop_words = stopwords.words('english')
+    
     text = text.lower()
     text = text.replace(r'[^\w\s]+','')
     word = ' '.join([lemmatizer.lemmatize(i, pos='v') for i in word_tokenize(text) if i not in stop_words])
