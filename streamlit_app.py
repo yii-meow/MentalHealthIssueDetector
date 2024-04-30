@@ -5,8 +5,6 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 
-nltk.download('punkt')
-
 import re
 
 lr_model = load('logistic_regression_model.joblib')
@@ -48,4 +46,5 @@ def preprocess(text):
     return vectorizer.transform([word]).toarray()
     
 if __name__ == '__main__':
+    nltk.download('punkt')
     main()
