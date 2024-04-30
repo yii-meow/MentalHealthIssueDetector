@@ -1,7 +1,11 @@
 import streamlit as st
 from joblib import load
-import pandas as pd
-import numpy as np
+
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+
+import re
 
 lr_model = load('logistic_regression_model.joblib')
 
