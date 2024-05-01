@@ -50,7 +50,6 @@ def main():
     results = []
             
     for sentence in sentences:
-        st.write(sentence)
         result = predict_sentiment(sentence)
         results.append((sentence, "Depressed" if result == 1 else "Not Depressed"))
     
