@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from joblib import load
 
 import nltk
@@ -43,8 +44,8 @@ def main():
             text = uploaded_file.getvalue().decode("utf-8")
             sentences = text.split('\n')
         elif uploaded_file.type == 'text/csv':
-            #df = pd.read_csv(uploaded_file)
-            #sentences = df['sentence'].tolist()  # Assuming 'sentence' is the column name in CSV containing sentences
+            df = pd.read_csv(uploaded_file)
+            sentences = df.iloc[:, 0].tolist()
 
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
