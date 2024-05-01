@@ -59,10 +59,10 @@ def main():
     df_results = st.table(pd.DataFrame(results, columns=["Text", "Depression Result"]))
     
     # Apply custom CSS style to Depression Result column
-    df_results["Depression Result"] = df_results["Depression Result"].apply(lambda x: f'<span style="{get_style(x)}">{x}</span>')
+    df_results_styled = df_results.style.applymap(lambda x: f'color: red' if x == "Depressed" else f'color: green', subset=["Depression Result"])
 
-    # Display table with HTML tags rendered
-    st.write(df_results, unsafe_allow_html=True)
+    # Display styled DataFrame
+    st.dataframe(df_results_styled)
 
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
