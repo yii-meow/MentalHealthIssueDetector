@@ -35,6 +35,23 @@ def main():
                 st.write("The sentence is classified as: Depressed")
             else:
                 st.write("The sentence is classified as: Not Depressed")
+                
+    # File uploader for analyzing sentences from a file
+    st.header("Upload a text file")
+    uploaded_file = st.file_uploader("Choose a file", type=["txt"])
+
+    # If file is uploaded
+    if uploaded_file is not None:
+        # Read uploaded file
+        text = uploaded_file.getvalue().decode("utf-8")
+
+        # Split text into sentences and analyze each sentence
+        sentences = re.split(r'(?<=[.!?]) +', text)
+        st.write("Sentences to analyze:")
+        for sentence in sentences:
+            st.write(sentence)
+            result = predict_sentiment(sentence)
+            st.write("Result: ", "Depressed" if result == 1 else "Not Depressed")
     
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
