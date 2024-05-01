@@ -46,6 +46,15 @@ def main():
         elif uploaded_file.type == 'text/csv':
             df = pd.read_csv(uploaded_file)
             sentences = df.iloc[:, 0].tolist()
+            
+    st.write("Sentences to analyze:")
+    for sentence in sentences:
+        # Skip empty sentences
+        if sentence.strip() == "":
+            continue
+        st.write(sentence)
+        result = predict_sentiment(sentence)
+        st.write("Result: ", "Depressed" if result == 1 else "Not Depressed")
 
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
