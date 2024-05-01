@@ -44,7 +44,7 @@ def main():
             text = uploaded_file.getvalue().decode("utf-8")
             sentences = text.split('\n')
         elif uploaded_file.type == 'text/csv':
-            df = pd.read_csv(uploaded_file)
+            df = pd.read_csv(uploaded_file, header=None)
             sentences = df.iloc[:, 0].tolist()
             
     results = []
