@@ -55,7 +55,14 @@ def main():
     
     # Display results in a table
     st.header("Analysis Results")
-    st.table(pd.DataFrame(results, columns=["Text", "Depression Result"]))
+    st.write("")
+    df_results = st.table(pd.DataFrame(results, columns=["Text", "Depression Result"]))
+    
+    # Apply custom CSS style to Depression Result column
+    df_results["Depression Result"] = df_results["Depression Result"].apply(lambda x: f'<span style="{get_style(x)}">{x}</span>')
+
+    # Display table with HTML tags rendered
+    st.write(df_results, unsafe_allow_html=True)
 
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
@@ -76,6 +83,13 @@ def preprocess(text):
     text = text.replace(r'[^\w\s]+','')
     word = ' '.join([lemmatizer.lemmatize(i, pos='v') for i in word_tokenize(text) if i not in stop_words])
     return vectorizer.transform([word]).toarray()
+
+# Define CSS style for text color
+def get_style(result):
+    if result == "Depressed":
+        return "color: red"
+    elif result == "Not Depressed":
+        return "color: green"
     
 if __name__ == '__main__':
     main()
