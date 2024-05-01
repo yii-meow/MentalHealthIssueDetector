@@ -1,5 +1,4 @@
 import streamlit as st
-# import pandas as pd
 from joblib import load
 
 import nltk
@@ -7,6 +6,10 @@ import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
 
 lr_model = load('logistic_regression_model.joblib')
 vectorizer = load('vectorizer.joblib')
@@ -40,8 +43,8 @@ def main():
             text = uploaded_file.getvalue().decode("utf-8")
             sentences = text.split('\n')
         elif uploaded_file.type == 'text/csv':
-            df = pd.read_csv(uploaded_file)
-            sentences = df['sentence'].tolist()  # Assuming 'sentence' is the column name in CSV containing sentences
+            #df = pd.read_csv(uploaded_file)
+            #sentences = df['sentence'].tolist()  # Assuming 'sentence' is the column name in CSV containing sentences
 
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
@@ -64,7 +67,4 @@ def preprocess(text):
     return vectorizer.transform([word]).toarray()
     
 if __name__ == '__main__':
-    nltk.download('punkt')
-    nltk.download('stopwords')
-    nltk.download('wordnet')
     main()
