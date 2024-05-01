@@ -1,5 +1,5 @@
 import streamlit as st
-import pandas as pd
+# import pandas as pd
 from joblib import load
 
 import nltk
@@ -64,7 +64,6 @@ def preprocess(text):
     return vectorizer.transform([word]).toarray()
     
 if __name__ == '__main__':
-    
     nltk.download('punkt')
     nltk.download('stopwords')
     nltk.download('wordnet')
