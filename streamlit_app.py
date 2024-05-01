@@ -38,7 +38,7 @@ def main():
                 
     # File uploader for analyzing sentences from a file
     st.header("Upload a text file")
-    uploaded_file = st.file_uploader("Choose a file", type=["txt"])
+    uploaded_file = st.file_uploader("Choose a file", type=["txt", "csv"])
 
     # If file is uploaded
     if uploaded_file is not None:
