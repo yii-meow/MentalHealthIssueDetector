@@ -1,5 +1,5 @@
-import pandas as pd
 import streamlit as st
+import pandas as pd
 from joblib import load
 
 import nltk
@@ -11,10 +11,6 @@ from nltk.stem import WordNetLemmatizer
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
-
-from sklearn.feature_extraction.text import TfidfVectorizer 
-
-import re
 
 lr_model = load('logistic_regression_model.joblib')
 vectorizer = load('vectorizer.joblib')
