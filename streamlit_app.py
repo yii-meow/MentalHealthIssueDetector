@@ -46,7 +46,7 @@ def main():
         text = uploaded_file.getvalue().decode("utf-8")
 
         # Split text into sentences and analyze each sentence
-        sentences = re.split(r'(?<=[.!?]) +', text)
+        sentences = text.split('\n')
         st.write("Sentences to analyze:")
         for sentence in sentences:
             st.write(sentence)
