@@ -37,8 +37,6 @@ def main():
     st.header("Upload a text file")
     uploaded_file = st.file_uploader("Choose a file", type=["txt", "csv"])
 
-    sentences = []
-
     # If file is uploaded
     if uploaded_file is not None:
         # Read uploaded file
@@ -49,16 +47,15 @@ def main():
             df = pd.read_csv(uploaded_file, header=None)
             sentences = df.iloc[:, 0].tolist()
             
-        if sentences:
-            results = []
-                
-            for sentence in sentences:
-                result = predict_sentiment(sentence)
-                results.append((sentence, "Depressed" if result == 1 else "Not Depressed"))
+        results = []
             
-            # Display results in a table
-            st.header("Analysis Results")
-            st.table(pd.DataFrame(results, columns=["Text", "Depression Result"]))
+        for sentence in sentences:
+            result = predict_sentiment(sentence)
+            results.append((sentence, "Depressed" if result == 1 else "Not Depressed"))
+        
+        # Display results in a table
+        st.header("Analysis Results")
+        st.table(pd.DataFrame(results, columns=["Text", "Depression Result"]))
 
 # Function to predict whether the sentence is depressed or not
 def predict_sentiment(sentence):
